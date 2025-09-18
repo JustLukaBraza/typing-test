@@ -9,6 +9,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=ALK+Tall+Mtavruli:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      :root, .theme-dark {
+        --color-bg: #1a1b26;
+        --color-bg-alt: #2a2c3a;
+        --color-text-primary: #a9b1d6;
+        --color-text-secondary: #565f89;
+        --color-accent: #7aa2f7;
+        --color-correct: #9ece6a;
+        --color-incorrect: #f7768e;
+      }
+      .theme-light {
+        --color-bg: #e1e1e1;
+        --color-bg-alt: #f0f0f0;
+        --color-text-primary: #2c3e50;
+        --color-text-secondary: #7f8c8d;
+        --color-accent: #3498db;
+        --color-correct: #27ae60;
+        --color-incorrect: #c0392b;
+      }
+      .theme-matrix {
+        --color-bg: #000000;
+        --color-bg-alt: #0d0208;
+        --color-text-primary: #00ff41;
+        --color-text-secondary: #008f11;
+        --color-accent: #00ff41;
+        --color-correct: #32cd32;
+        --color-incorrect: #ff0000;
+      }
+    </style>
     <script>
       tailwind.config = {
         theme: {
@@ -18,13 +47,15 @@
               'georgian': ['ALK Tall Mtavruli', 'sans-serif'],
             },
             colors: {
-              'dark': '#1a1b26',
-              'light-dark': '#2a2c3a',
-              'primary': '#a9b1d6',
-              'secondary': '#565f89',
-              'accent': '#7aa2f7',
-              'correct': '#9ece6a',
-              'incorrect': '#f7768e',
+              'bg': 'var(--color-bg)',
+              'bg-alt': 'var(--color-bg-alt)',
+              'primary': 'var(--color-text-primary)',
+              'secondary': 'var(--color-text-secondary)',
+              'accent': 'var(--color-accent)',
+              'correct': 'var(--color-correct)',
+              'incorrect': 'var(--color-incorrect)',
+              'dark': 'var(--color-bg)',
+              'light-dark': 'var(--color-bg-alt)',
             },
             keyframes: {
               blink: {
@@ -34,11 +65,17 @@
               'fade-in': {
                 '0%': { opacity: 0, transform: 'translateY(10px)' },
                 '100%': { opacity: 1, transform: 'translateY(0)' },
-              }
+              },
+              shake: {
+                '0%, 100%': { transform: 'translateX(0)' },
+                '25%': { transform: 'translateX(-2px)' },
+                '75%': { transform: 'translateX(2px)' },
+              },
             },
             animation: {
               blink: 'blink 1s linear infinite',
               'fade-in': 'fade-in 0.5s ease-out forwards',
+              'shake': 'shake 0.2s ease-in-out',
             }
           }
         }
@@ -50,13 +87,14 @@
     "react/": "https://aistudiocdn.com/react@^19.1.1/",
     "react": "https://aistudiocdn.com/react@^19.1.1",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
-    "recharts": "https://aistudiocdn.com/recharts@^3.2.1"
+    "recharts": "https://aistudiocdn.com/recharts@^3.2.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^0.1.1"
   }
 }
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-dark text-primary font-mono">
+  <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
